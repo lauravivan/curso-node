@@ -4,7 +4,7 @@
 
 Etapas da transformação
 
-![Transformação do JS para C++]("/images/modulo-1/JS-to-C++.png")
+![Transformação do JS para C++]("images/modulo-1/JS-to-C++.png")
 
 Todas as operações bloqueantes (acesso a BD, leitura de arquivos...) são delegadas ao sistema operacional por meio do Event Loop. Quando a operação é finalizada o sistema operacional envia um Callback (sinalizando que terminou) para o Event Loop que devolve para quem chamou.
 
@@ -14,7 +14,7 @@ Isso gera um problema de sincronização.
 
 Portanto, é necessário garantir a ordem de execução para evitar problemas (retornos indesejados).
 
-![Event Loop]("/images/modulo-1/event-loop.png")
+![Event Loop]("images/modulo-1/event-loop.png")
 
 Para manipulação do Event Loop (delegação de eventos) é utilizada somente uma Thread (SingleThread), mas quem trabalha com as Threads é o próprio SO (Sistema Operacional).
 
@@ -64,7 +64,7 @@ console.log(`Telefone: ${phoneNumber}`); // console.log("Telefone", phoneNumber)
 ```
 
 Retorno:
-![Usuário undefined]("/images/modulo-1/user-undefined.png")
+![Usuário undefined]("images/modulo-1/user-undefined.png")
 
 Para resolver esse problema pode-se utilizar o Callback.
 
@@ -88,7 +88,7 @@ getUser(resolveUser);
 
 Cria-se uma segunda função (que será o Callback) e essa função é passada para a função getUser, para ser executada quando finalizado.
 
-![Uso de Callback para retornar usuário]("/images/modulo-1/user-callback.png")
+![Uso de Callback para retornar usuário]("images/modulo-1/user-callback.png")
 
 ```
 function getUser(callback) {
@@ -129,15 +129,15 @@ A função resolveUser que se comporta como a função Callback é passada para 
 
 É possível notar que o callback é sempre passado como último parâmetro.
 
-![Uso de Callback para retornar número de telefone]("/images/modulo-1/phone-number-callback.png")
+![Uso de Callback para retornar número de telefone]("images/modulo-1/phone-number-callback.png")
 
 Por fim, faz-se o mesmo com endereço.
 
-![Uso de Callback para retornar endereço]("/images/modulo-1/address-callback.png")
+![Uso de Callback para retornar endereço]("images/modulo-1/address-callback.png")
 
 Depois de todos os Callbacks construídos e aninhados, é possível visualizar todos os dados.
 
-![Informações do usuário]("/images/modulo-1/all-informations-printed.png")
+![Informações do usuário]("images/modulo-1/all-informations-printed.png")
 
 Porém, isso traz um problema. A quantidade de aninhamentos, mesmo que somente com 3 funções, já se torna difícil de manter e debuggar.
 
@@ -178,7 +178,7 @@ userPromise
 
 ```
 
-![Refatoração do Callback de Usuário para Promise]("/images/modulo-1/user-promise.png")
+![Refatoração do Callback de Usuário para Promise]("images/modulo-1/user-promise.png")
 
 O objeto Promise é instanciado e nele é passado uma função que irá retornar duas funções: a função responsável por lidar com o resultado e a função responsável por lidar com o erro. Nisso, há uma separação de responsabilidades. Para capturar o resultado utiliza-se **then** e para capturar o erro **catch**. É possível também lidar com o erro pelo **then**, como exemplo abaixo:
 
@@ -209,7 +209,7 @@ function getUser() {
 }
 ```
 
-![Retorno de erro na Promise de Usuário]("/images/modulo-1/user-promise-error.png")
+![Retorno de erro na Promise de Usuário]("images/modulo-1/user-promise-error.png")
 
 Refatorando tudo para utilizar somente Promises:
 
@@ -277,7 +277,7 @@ userPromise
   });
 ```
 
-![Resultado com Promises]("/images/modulo-1/all-promises.png")
+![Resultado com Promises]("images/modulo-1/all-promises.png")
 
 O próprio Node.js possui um módulo interno que auxilia na transformação de Callback para Promise, sem que precisemos instanciar em toda função.
 
@@ -402,9 +402,9 @@ Como endereço não depende da resolução da Promise de telefone, é possível 
 
 Diferença de tempo de resposta entre ambos os casos:
 
-![Tempo de resposta maior com async/await]("/images/modulo-1/async-await-longer.png")
+![Tempo de resposta maior com async/await]("images/modulo-1/async-await-longer.png")
 
-![Tempo de resposta menor com async/await]("/images/modulo-1/async-await-shorter.png")
+![Tempo de resposta menor com async/await]("images/modulo-1/async-await-shorter.png")
 
 ## Manipulação de eventos com EventEmitter
 
@@ -412,7 +412,7 @@ Tudo que ocorre e é manipulado no JavaScript ocorre a partir de eventos, portan
 
 Trabalha sob o Design Pattern Observer/PubSub.
 
-![Observer Design Pattern]("/images/modulo-1/observer.png")
+![Observer Design Pattern]("images/modulo-1/observer.png")
 
 Primeiro exemplo:
 
